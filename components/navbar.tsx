@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function Nav() {
   return (
-    <header className="w-full justify-center flex backdrop-blur-lg bg-black/90 top-0 sticky z-50 ">
+    <header className="w-full justify-center flex backdrop-blur-lg bg-black/90 top-0 fixed z-50 ">
       <Container>
         <div className="flex text-white justify-between py-4 items-center">
           <div>
