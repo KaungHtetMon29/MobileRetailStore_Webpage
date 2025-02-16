@@ -23,19 +23,19 @@ export default function Home() {
     <div>
       <Parallax ref={parallax} pages={5} className=" no-scrollbar bg-black">
         {/* background 1*/}
-        <ParallaxLayer
+        {/* <ParallaxLayer
           offset={0}
           speed={0}
-          factor={1}
+          factor={0.5}
           className="w-full h-full bg-black"
-        />
+        /> */}
         <ParallaxLayer
           offset={0}
           speed={-3}
           factor={1}
-          className="w-full h-full justify-center flex bg-black"
+          className="w-full h-full justify-center flex"
         >
-          <div className="container flex h-full w-full gap-10 items-center ">
+          <div className="container flex h-full w-full gap-10 items-center justify-between">
             <Image
               src="/images/Iphone15Pro.png"
               className="object-contain"
@@ -54,14 +54,19 @@ export default function Home() {
           </div>
         </ParallaxLayer>
         {/* background 2*/}
-        <ParallaxLayer offset={1} speed={0} factor={1} className="bg-gray-50" />
+        <ParallaxLayer
+          offset={1}
+          speed={0}
+          factor={1}
+          className="bg-gray-50 w-full h-full"
+        />
         <ParallaxLayer
           offset={1}
           speed={-2}
           factor={1}
-          className="justify-center bg-repeat-round flex"
+          className="justify-center bg-repeat-round flex items-center "
         >
-          <div className="container flex items-center justify-center flex-col gap-20">
+          <div className="container flex items-center justify-center flex-col gap-10 py-20">
             <h2 className="text-6xl tracking-tight font-bold">
               Which Phone is right for you?
             </h2>
@@ -79,7 +84,7 @@ export default function Home() {
           factor={1}
           className="w-full h-full relative"
         >
-          <div className="absolute w-full h-full bg-black/60 backdrop-blur-sm z-50"></div>
+          <div className="absolute w-full h-full bg-black/60 backdrop-blur-sm z-40"></div>
           <Image
             src="/images/devices.jpg"
             className="object-cover w-full h-full blur-sm"
@@ -88,19 +93,13 @@ export default function Home() {
             alt="devices"
           />
         </ParallaxLayer>
-        {/* <ParallaxLayer
-          offset={2}
-          speed={0}
-          factor={1.5}
-          className="w-full h-full bg-primary"
-        /> */}
         <ParallaxLayer
           offset={2}
-          speed={-3.5}
+          speed={-2}
           factor={1}
-          className="w-full h-full justify-center flex "
+          className="w-full h-full justify-center flex"
         >
-          <div className="container flex h-full w-full pt-20 flex-col gap-14 items-center justify-center ">
+          <div className="container flex h-full w-full pt-20 flex-col gap-14 items-center justify-center">
             <h2 className="text-6xl tracking-tight font-bold text-white">
               Comparing Models
             </h2>
@@ -114,9 +113,9 @@ export default function Home() {
         <ParallaxLayer offset={3} speed={0} factor={1} className="bg-gray-50" />
         <ParallaxLayer
           offset={3}
-          speed={-3.5}
+          speed={-3}
           factor={1}
-          className="w-full h-full justify-center flex "
+          className="w-full h-full justify-center flex items-center"
         >
           <div className="container flex h-full w-full pt-20 flex-col gap-14 items-center justify-center ">
             <h2 className="text-6xl tracking-tight font-bold ">

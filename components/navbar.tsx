@@ -13,7 +13,7 @@ export default function Nav() {
           <div className="flex gap-20">
             <Link href="/">Home</Link>
             <Link href="/product">Product</Link>
-            <Link href="/contact">Track Repair</Link>
+            <Link href="/repairTrack">Track Repair</Link>
             <Link href="/contact">Contact Us</Link>
           </div>
           <div className="flex gap-6">

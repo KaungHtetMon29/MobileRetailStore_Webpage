@@ -28,8 +28,8 @@ export default function Page() {
         <div className="w-full">
           <Card className="w-full shadow-none">
             <CardHeader>Business Hours</CardHeader>
-            <CardContent className="w-full flex">
-              <div className="w-1/2 flex gap-4">
+            <CardContent className="w-full flex ">
+              <div className="w-1/2 flex gap-4 items-start justify-start">
                 <div className="justify-center pt-[.5px]">
                   <Clock size={24} />
                 </div>
@@ -38,7 +38,7 @@ export default function Page() {
                   <p>Monday - Friday: 9:00 AM - 7:00 PM</p>
                 </div>
               </div>
-              <div className="w-1/2 flex gap-4">
+              <div className="w-1/2 flex gap-4 items-start justify-start">
                 <div className="justify-center pt-[.5px]">
                   <Clock size={24} />
                 </div>
