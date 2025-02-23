@@ -43,7 +43,7 @@ const LoginBtn = () => {
   return (
     <div className=" items-center gap-2 flex">
       <User />
-      <p className="text-center">Login</p>
+      <Link href="/login">Login</Link>
     </div>
   );
 };
