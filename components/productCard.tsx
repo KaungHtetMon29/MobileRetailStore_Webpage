@@ -2,30 +2,34 @@ import Image from "next/image";
 import { Card, CardContent, CardDescription, CardTitle } from "./ui/card";
 import { Button } from "./ui/button";
 
-export default function ProductCard() {
+export default function ProductCard({ product }: { product: any }) {
   return (
-    <Card className="w-[350px] h-[400px] rounded-lg border-0">
-      <div className="h-1/2 w-full flex justify-center">
+    <Card className="w-[350px] h-[500px] rounded-lg border-0 flex flex-col">
+      <div className="h-[250px] w-full flex justify-center items-center p-4">
         <Image
-          src="https://www.istudio.store/cdn/shop/files/iPhone_16_Pro_Desert_Titanium_TH_1.jpg?v=1725929129"
+          src={product.ImageURL}
           alt="product"
-          width={300}
-          height={300}
-          className="object-contain"
+          width={200}
+          height={200}
+          className="object-contain h-full w-auto"
         />
       </div>
-      <CardContent className="flex flex-col gap-3 h-max justify-between bg-primary rounded-b-lg">
-        <CardTitle className="text-background pt-3">IPhone 16 pro</CardTitle>
-        <CardDescription className="flex flex-col gap-1 text-background">
-          <h2 className="font-semibold">Specification</h2>
-          <ul>
-            <li>test</li>
-            <li>test</li>
-            <li>test</li>
-            <li>test</li>
+      <CardContent className="flex flex-col gap-3 flex-1 justify-between bg-primary rounded-b-lg p-4">
+        <CardTitle className="text-background pt-3 text-xl leading-tight">
+          {product.Name}
+        </CardTitle>
+        <CardDescription className="flex flex-col gap-1 text-background text-base">
+          <h2 className="font-semibold text-sm">
+            Brand - {product.Brand.Name}
+          </h2>
+          <h2 className="font-semibold text-sm mt-1">Specification</h2>
+          <ul className="text-sm">
+            <li>Price- {product.Price}$</li>
           </ul>
         </CardDescription>
-        <Button className="bg-background text-primary">Add to Cart</Button>
+        <Button className="bg-background text-primary mt-auto text-sm font-medium">
+          Add to Cart
+        </Button>
       </CardContent>
     </Card>
   );

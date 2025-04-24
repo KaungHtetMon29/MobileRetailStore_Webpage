@@ -3,8 +3,8 @@ import { Card, CardContent, CardTitle } from "./ui/card";
 import { Button } from "./ui/button";
 import { Label } from "./ui/label";
 import { Input } from "./ui/input";
-import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
+import { AuthFormChange } from "./authContainer";
 
 export default function SignIn() {
   return (
@@ -47,12 +47,11 @@ export default function SignIn() {
               <p className="text-md">Forgot Password?</p>
             </div>
             <Button className="w-full">Login</Button>
-            <p className="flex gap-2 w-full justify-center">
-              Don't have an account?
-              <Link href={"/signup"} className="text-blue-600 underline">
-                Sign up
-              </Link>
-            </p>
+            <AuthFormChange
+              label="Don't have an account?"
+              route="signup"
+              text="Signup"
+            />
           </div>
         </CardContent>
       </Card>

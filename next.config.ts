@@ -17,6 +17,7 @@ const nextConfig: NextConfig = {
       "www.via.placeholder.com",
       "www.istudio.store",
       "images.unsplash.com",
+      "zenshopkmd.s3.ap-southeast-1.amazonaws.com",
     ],
   },
 };

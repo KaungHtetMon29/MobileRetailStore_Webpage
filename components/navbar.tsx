@@ -14,6 +14,7 @@ export default function Nav() {
             <Link href="/">Home</Link>
             <Link href="/product">Product</Link>
             <Link href="/repairTrack">Track Repair</Link>
+            <Link href="/deliveryTrack">Track Delivery</Link>
             <Link href="/contact">Contact Us</Link>
           </div>
           <div className="flex gap-6">
@@ -50,11 +51,14 @@ const LoginBtn = () => {
 
 const ShoppingCart = () => {
   return (
-    <div className=" items-center gap-2 flex relative">
+    <Link
+      href={"/cart"}
+      className="items-center gap-2 flex relative cursor-pointer"
+    >
       <ShoppingCartIcon size={25} />
       <span className="absolute -top-0 -right-2 bg-white w-5 h-5 text-primary flex justify-center items-center text-center rounded-full text-sm">
         0
       </span>
-    </div>
+    </Link>
   );
 };
