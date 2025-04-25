@@ -1,6 +1,9 @@
+"use client";
+
 import Container from "@/layouts/container";
 import { Search, ShoppingCartIcon, User } from "lucide-react";
 import Link from "next/link";
+import { useCart } from "@/lib/contexts/CartContext";
 
 export default function Nav() {
   return (
@@ -50,15 +53,19 @@ const LoginBtn = () => {
 };
 
 const ShoppingCart = () => {
+  const { totalItems } = useCart();
+
   return (
     <Link
       href={"/cart"}
       className="items-center gap-2 flex relative cursor-pointer"
     >
       <ShoppingCartIcon size={25} />
-      <span className="absolute -top-0 -right-2 bg-white w-5 h-5 text-primary flex justify-center items-center text-center rounded-full text-sm">
-        0
-      </span>
+      {totalItems > 0 && (
+        <span className="absolute -top-0 -right-2 bg-white w-5 h-5 text-primary flex justify-center items-center text-center rounded-full text-sm">
+          {totalItems > 99 ? "99+" : totalItems}
+        </span>
+      )}
     </Link>
   );
 };

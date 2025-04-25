@@ -10,11 +10,11 @@ export default function Layout({
     <>
       <SidebarProvider>
         <AppSidebar />
-        <main className="w-full bg-gray-200 h-full pb-32 pt-10">
+        <main className="w-full bg-gray-200 min-h-screen pb-32 pt-10">
           <div className="fixed top-20 ">
             <SidebarTrigger />
           </div>
-          {children}
+          <div className="h-full min-h-[calc(100vh-150px)]">{children}</div>
         </main>
       </SidebarProvider>
     </>
