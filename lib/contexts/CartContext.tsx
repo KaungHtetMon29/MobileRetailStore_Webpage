@@ -1,6 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState, useEffect } from "react";
+import { useSession } from "next-auth/react"; // Add this import for NextAuth session
 
 // Define the cart item type
 export interface CartItem {
@@ -75,6 +76,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   const [totalItems, setTotalItems] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
   const [isCheckingOut, setIsCheckingOut] = useState(false);
+  const { data: session } = useSession(); // Add this line to get the user session
 
   // Load cart from localStorage when component mounts (client-side only)
   useEffect(() => {
@@ -177,8 +179,22 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   ): Promise<CheckoutResult> => {
     setIsCheckingOut(true);
     try {
+      // Get user information from session with proper logging
+      console.log("Session user data:", session?.user);
+
+      const userData = session?.user
+        ? {
+            userId: session.user.id || "", // This should now contain the MongoDB _id
+            userName: session.user.name || "",
+            userEmail: session.user.email || "",
+          }
+        : null;
+
+      console.log("User data being sent to API:", userData);
+
       // Prepare order data to send to API
       const checkoutData = {
+        user: userData, // Add user data from Prisma
         shipping: shippingInfo,
         payment: {
           // Send only necessary payment info, excluding sensitive data like CVC
@@ -199,7 +215,8 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
           total: totalPrice + (shippingFee || 0),
         },
       };
-
+      console.log("Checkout data:");
+      console.log(checkoutData);
       // Send checkout data to API
       const response = await fetch("http://localhost:8080/checkout", {
         method: "POST",

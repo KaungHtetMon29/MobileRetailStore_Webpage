@@ -79,13 +79,13 @@ const CartItemComponent = ({ item }: { item: CartItem }) => {
   return (
     <Card className="flex justify-between items-center h-32 px-10">
       <div className="flex gap-4 items-center">
-        <div className="w-28">
+        <div className="w-28 h-28 flex items-center justify-center">
           <Image
             src={item.ImageURL}
             alt={item.Name}
-            width={300}
-            height={300}
-            className="object-contain"
+            width={100}
+            height={100}
+            className="object-contain w-full h-full"
           />
         </div>
         <div className="flex flex-col gap-1">

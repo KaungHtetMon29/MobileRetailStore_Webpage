@@ -18,6 +18,7 @@ const nextConfig: NextConfig = {
       "www.istudio.store",
       "images.unsplash.com",
       "zenshopkmd.s3.ap-southeast-1.amazonaws.com",
+      "lh3.googleusercontent.com",
     ],
   },
 };

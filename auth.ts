@@ -22,7 +22,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         console.error("Profile is missing required fields");
         return false;
       }
-      await prisma.user.upsert({
+
+      // Upsert the user and get the result which contains the MongoDB _id
+      const user = await prisma.user.upsert({
         create: {
           email: profile.email as string,
           name: profile.name as string,
@@ -37,19 +39,45 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           email: profile.email as string,
         },
       });
+
+      // Add the MongoDB _id to the profile
+      profile._id = user.id;
+
       return true;
     },
-    async jwt({ token, account }) {
+    async jwt({ token, account, profile }) {
       if (account) {
         token.account = account;
-        token.id = account.id;
       }
+
+      if (profile && profile._id) {
+        // Store the MongoDB _id in the token
+        token._id = profile._id;
+      } else if (!token._id) {
+        // If _id isn't in the token yet, try to fetch it from the database
+        try {
+          const user = await prisma.user.findUnique({
+            where: { email: token.email as string },
+            select: { id: true },
+          });
+
+          if (user) {
+            token._id = user.id;
+          }
+        } catch (error) {
+          console.error("Error fetching user ID:", error);
+        }
+      }
+
       return token;
     },
-    async session(params) {
-      console.log("this is token", params.token);
-      console.log("this is session", params.session);
-      return params.session;
+    async session({ session, token }) {
+      // Pass the MongoDB _id to the session's user object
+      if (token._id && session.user) {
+        session.user.id = token._id;
+      }
+
+      return session;
     },
   },
 });
